@@ -16,6 +16,7 @@ for line in inputfile:
 	    	if ss[i] == "LONGTITUDE": LongtiIndex = i
 	    	if ss[i] == "OBSERVATION DATE": ObserIndex = i
 	    	if ss[i] == "ALL SPECIES REPORTED": CompleteIndex = i
+	    continue
 	if int(ss[latiIndex])>LatiMax: LatiMax = int(ss[latiIndex])
 	if int(ss[latiIndex])<LatiMin: LatiMin = int(ss[latiIndex])
 	if int(ss[LongtiIndex])>LongMax: LongMax = int(ss[LongtiIndex])
