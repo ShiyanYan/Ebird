@@ -19,11 +19,10 @@ def bSearch(ks):
 	else:
 		return False
 
-inputfile = open("/home/projects/ebird/EBD_relAug-2014$/ebd_relAug-2014.txt","r")
-
+inputfile = open("/home/projects/ebird/EBD_relAug-2014/ebd_relAug-2014.txt","r")
 tt = 0
 ind  = 0
-outputfile = open("/home/projects/ebird/BCR30/EBD-BCR30")
+outputfile = open("/home/projects/ebird/BCR30/EBD-BCR30.txt","w")
 for line in inputfile:
 	tt += 1
 	if tt % 1000000==0: print tt,"complete!"
