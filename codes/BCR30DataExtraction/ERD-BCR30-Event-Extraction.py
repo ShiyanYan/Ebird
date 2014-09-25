@@ -6,10 +6,11 @@ for i in range(2002,2013):
 	inputfile = open("/home/projects/ebird/ERD_us48/" + str(i) + "/core-covariates.csv","r")
 	tt = 0
 	ind = 0
-	if tt % 100000: print i,tt,"complete!"
+
 	for line in inputfile:
 		ss = line.split(',')
 		tt += 1
+		if tt % 100000==0: print i,tt,"complete!"
 		if tt == 1:
 			ind = 0
 			for s in ss:
