@@ -20,12 +20,14 @@ def bSearch(ks):
 		return False
 
 inputfile = open("/home/projects/ebird/EBD_relAug-2014/ebd_relAug-2014.txt","r")
+
 tt = 0
 ind  = 0
 outputfile = open("/home/projects/ebird/BCR30/EBD-BCR30.txt","w")
+linetot = 0
 for line in inputfile:
 	tt += 1
-	if tt % 1000000==0: print tt,"complete!"
+	if tt % 1000000==0: print tt,"complete!",linetot
 	ss = line.split("\t")
 	if tt==1:
 		ind = 0
@@ -34,7 +36,9 @@ for line in inputfile:
 				break
 			else:
 				ind += 1
-		outputfile.write(ss)
+		outputfile.write(line)
 		continue
 	if not bSearch(ss[ind]): continue
-	outputfile.write(ss)
+	outputfile.write(line)
+	linetot += 1
+
