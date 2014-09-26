@@ -13,9 +13,10 @@ CompleteIndex = 0
 
 outputfile = open("/home/projects/ebird/BCR30/EBD_Encoded.csv","w")
 
-headline = "Region,Month,Complete\n"
+headline = "SE,Region,Month,Complete\n"
 outputfile.write(headline)
-
+previous = ''
+outlist = []
 for line in inputfile:
 	ss = line.split("\t")
 	tt += 1
@@ -27,19 +28,20 @@ for line in inputfile:
 			if ss[i] == "LONGITUDE": LongtiIndex = i
 			if ss[i] == "OBSERVATION DATE": ObserIndex = i
 			if ss[i] == "ALL SPECIES REPORTED": CompleteIndex = i
+                        if ss[i] == "SAMPLING EVENT IDENTIFIER": SEIndex = i
 		continue
 
-	Lati = ss[LatiIndex]
-	Long = ss[LongtiIndex]
+	Lati = float(ss[LatiIndex])
+	Long = float(ss[LongtiIndex])
 	Date = ss[ObserIndex]
 	Complete = ss[CompleteIndex]
 	k1 = 0
 	k2 = 0
 	if Lati<39:
 		k1 = 1
-	elif lati<41:
+	elif Lati<41:
 		k1 = 2
-	elif lati<43:
+	elif Lati<43:
 		k1 = 3
 	else:
 		k1 = 4
@@ -66,9 +68,9 @@ for line in inputfile:
 		mnumber = 4
 	else:
 		mnumber = 1
-
-	outputfile.write("rnumber" + "," + "mnumber" + "," + Complete + "\n")
-
+	if ss[SEIndex]!= previous:
+		outlist.append(ss[SEIndex] +  "," + str(rnumber) + "," + str(mnumber) + "," + Complete + "\n")
+		previous = ss[SEIndex]
 
 
 
@@ -76,6 +78,10 @@ for line in inputfile:
 	# if float(ss[LatiIndex])<LatiMin: LatiMin = float(ss[LatiIndex])
 	# if float(ss[LongtiIndex])>LongMax: LongMax = float(ss[LongtiIndex])
 	# if float(ss[LongtiIndex])<LongMin: LongMin = float(ss[LongtiIndex])
-
+previous = ""
+for line in sorted(outlist):
+	if line==previous: continue
+	previous = line
+	outputfile.write(line)
 print "LatiMax:",LatiMax,"LatiMin:",LatiMin
 print "LongMax:",LongMax,"LongMin:",LongMin
