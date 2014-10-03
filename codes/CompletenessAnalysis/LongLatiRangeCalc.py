@@ -37,34 +37,34 @@ for line in inputfile:
 	Complete = ss[CompleteIndex]
 	k1 = 0
 	k2 = 0
-	if Lati<39:
-		k1 = 1
-	elif Lati<41:
-		k1 = 2
-	elif Lati<43:
-		k1 = 3
-	else:
-		k1 = 4
-
-	if Long<-82:
-		k2 = 1
-	elif Long<-78:
-		k2 = 2
-	elif Long<-74:
-		k2 = 3
-	else:
-		k2 = 4
-
-	rnumber = (k1-1)*4 + k2
+	# if Lati<39:
+	# 	k1 = 1
+	# elif Lati<41:
+	# 	k1 = 2
+	# elif Lati<43:
+	# 	k1 = 3
+	# else:
+	# 	k1 = 4
+	k1 = int((Lati-37)/0.25)
+	# if Long<-82:
+	# 	k2 = 1
+	# elif Long<-78:
+	# 	k2 = 2
+	# elif Long<-74:
+	# 	k2 = 3
+	# else:
+	# 	k2 = 4
+	k2 = int((Long+84)/0.25)
+	rnumber = (k1-1)*100 + k2
 	month = int(Date.split("-")[1])
 	mnumber = 0
-	if (month>=1) and (month<=3):
+	if (month>=1) and (month<=2):
 		mnumber = 1
-	elif (month>=4) and (month<=6):
+	elif (month>=3) and (month<=5):
 		mnumber = 2
-	elif (month>=7) and (month<=9):
+	elif (month>=6) and (month<=8):
 		mnumber = 3
-	elif (month>=10) and (month<=11):
+	elif (month>=9) and (month<=10):
 		mnumber = 4
 	else:
 		mnumber = 1
@@ -74,10 +74,10 @@ for line in inputfile:
 
 
 
-	# if float(ss[LatiIndex])>LatiMax: LatiMax = float(ss[LatiIndex])
-	# if float(ss[LatiIndex])<LatiMin: LatiMin = float(ss[LatiIndex])
-	# if float(ss[LongtiIndex])>LongMax: LongMax = float(ss[LongtiIndex])
-	# if float(ss[LongtiIndex])<LongMin: LongMin = float(ss[LongtiIndex])
+	if float(ss[LatiIndex])>LatiMax: LatiMax = float(ss[LatiIndex])
+	if float(ss[LatiIndex])<LatiMin: LatiMin = float(ss[LatiIndex])
+	if float(ss[LongtiIndex])>LongMax: LongMax = float(ss[LongtiIndex])
+	if float(ss[LongtiIndex])<LongMin: LongMin = float(ss[LongtiIndex])
 previous = ""
 for line in sorted(outlist):
 	if line==previous: continue
