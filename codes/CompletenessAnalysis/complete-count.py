@@ -1,5 +1,5 @@
 import sys
-inp = "/home/projects/ebird/EBD/ebd_relMay-2014.txt"
+inp = "/home/projects/ebird/BCR30/EBD-BCR30.txt"
 inputfile = open(inp,'r')
 
 tt = 0
