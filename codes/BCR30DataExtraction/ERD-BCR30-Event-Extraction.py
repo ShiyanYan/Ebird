@@ -19,7 +19,7 @@ for i in range(2002,2013):
 				else:
 					ind += 1
 			continue
-		if (ss[ind]=="30"):
+		if (ss[ind]=="30") or (ss[ind]=="31") or (ss[ind]=="37"):
 			Event_ID_list.append(ss[0])
 print len(Event_ID_list)
 outputfile = open("/home/projects/ebird/BCR30/EventIDs.dump","w")
