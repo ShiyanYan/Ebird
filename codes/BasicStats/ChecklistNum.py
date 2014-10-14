@@ -2,6 +2,7 @@ inputfile = open("/home/projects/ebird/BCR30/EBD-BCR30.txt","r")
 outfile = open("/home/projects/ebird/BCR30/CheckListNum.csv","w")
 outfile.write("ObserID,Count\n")
 dic = {}
+tt = 0
 for line in inputfile:
 	ss = line.split("\t")
 	tt += 1
