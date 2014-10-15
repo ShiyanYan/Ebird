@@ -4,7 +4,7 @@ import cPickle as pickle
 
 inputfile = open("/home/projects/ebird/BCR30/EBD-BCR30.txt","r")
 
-outfile.write("ObserID,Count\n")
+
 dic = {}
 tt = 0
 for line in inputfile:
@@ -26,5 +26,6 @@ tempPath = "/home/projects/ebird/BCR30/Temp/"
 
 outfile = open(tempPath + "ChecklistCounts.csv","w")
 
+outfile.write("ObserID,Count\n")
 for UserID in dic:
 	outfile.write(UserID + "," + str(dic[UserID]) + "\n")
