@@ -12,15 +12,15 @@ MaxLati = 50
 
 tempPath = "/home/projects/ebird/BCR30/Temp/"
 
-ObserIDdic = pickle.load(tempPath + "UserIDCount.dump")
-EventIDdic = pickle.load(tempPath + "EventIDCount.dump")
+ObserIDdic = pickle.load(open(tempPath + "UserIDCount.dump","r"))
+EventIDdic = pickle.load(open(tempPath + "EventIDCount.dump","r"))
 
-newdic = []
+newdic = {}
 for item in sorted(ObserIDdic):
 	newdic[item] = ObserIDdic[item]
 ObserIDdic = dict(newdic)
 
-newdic = []
+newdic = {}
 for item in sorted(EventIDdic):
 	newdic[item] = EventIDdic[item]
 EventIDdic = dict(newdic)
@@ -35,7 +35,7 @@ DateIndex = 0
 CompleteIndex = 0
 SEIndex = 0
 ObserIndex = 0
-
+tt = 0
 lineset = []
 for line in inputfile:
 	ss = line.split("\t")
@@ -62,7 +62,7 @@ for line in inputfile:
 	Region = str(k1 * 1000 + k2)
 	cline = cline + Region + ','
 
-	Date = ss[ObserIndex]
+	Date = ss[DateIndex]
 	month = int(Date.split("-")[1])
 	mnumber = 0
 	if (month>=1) and (month<=2):
