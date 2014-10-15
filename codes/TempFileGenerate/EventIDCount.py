@@ -28,7 +28,7 @@ outfile = open(tempPath + "EventIDCounts.csv","w")
 
 outfile.write("EventID,Count\n")
 for EventID in dic:
-	outfile.write(EventID + "," + str(dic[EventID) + "\n")
+	outfile.write(EventID + "," + str(dic[EventID]) + "\n")
 
 outfile2 = open(tempPath + "EventIDCount.dump","w")
 pickle.dump(dic,outfile2)

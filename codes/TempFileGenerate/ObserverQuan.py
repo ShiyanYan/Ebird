@@ -24,7 +24,7 @@ for line in inputfile:
 
 tempPath = "/home/projects/ebird/BCR30/Temp/"
 
-outfile = open(tempPath + "ChecklistCounts.csv","w")
+outfile = open(tempPath + "UserIDCounts.csv","w")
 
 outfile.write("ObserID,Count\n")
 for UserID in dic:
