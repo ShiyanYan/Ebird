@@ -29,3 +29,6 @@ outfile = open(tempPath + "ChecklistCounts.csv","w")
 outfile.write("ObserID,Count\n")
 for UserID in dic:
 	outfile.write(UserID + "," + str(dic[UserID]) + "\n")
+
+outfile2 = open(tempPath + "UserIDCount.dump","w")
+pickle.dump(dic,outfile2)
