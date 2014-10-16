@@ -78,10 +78,28 @@ for line in inputfile:
 	cline = cline + str(mnumber) + ","
 
 	SpecNum = EventIDdic[EventID]
-	cline = cline + str(SpecNum) + ","
+	spn = 0
+	if SpecNum<=7:
+		spn = 1
+	elif SpecNum<=17:
+		spn = 2
+	elif SpecNum<=25:
+		spn = 3
+	else:
+		spn = 4
+	cline = cline + str(spn) + ","
 
+	obl = 0
 	Obserlevel = ObserIDdic[ss[ObserIndex]]
-	cline = cline + str(Obserlevel) + ","
+	if Obserlevel <=10:
+		obl = 1
+	elif Obserlevel <= 43:
+		obl = 2
+	elif Obserlevel <= 226:
+		obl = 3
+	else:
+		obl = 4
+	cline = cline + str(obl) + ","
 
 	Complete = ss[CompleteIndex]
 
