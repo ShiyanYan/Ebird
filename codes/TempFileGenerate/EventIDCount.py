@@ -2,7 +2,7 @@
 
 import cPickle as pickle
 
-inputfile = open("/home/projects/ebird/BCR30/EBD-BCR30.txt","r")
+inputfile = open("/home/projects/ebird/BCR30/ECR303137.txt","r")
 
 
 dic = {}
