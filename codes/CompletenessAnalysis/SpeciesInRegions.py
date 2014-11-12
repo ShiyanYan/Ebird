@@ -106,7 +106,7 @@ for sp in speciesDicA:
 outputHeadLine = "SubSpeciesSciName,InCompleteness,Completeness\n"
 outputfile2 = open("/home/projects/ebird/BCR30/SubSpeciesCompleteness.csv","w")
 outputfile2.write(outputHeadLine)
-for sp in speciesDicA:
+for sp in subspeciesDicA:
 	outputfile2.write(sp + ",")
 	if sp in subspeciesDicC:
 		outputfile2.write( str(subspeciesDicA[sp]-subspeciesDicC[sp])+ "," + str(subspeciesDicC[sp]) + "\n")
