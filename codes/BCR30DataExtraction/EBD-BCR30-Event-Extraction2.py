@@ -23,36 +23,22 @@ inputfile = open("/home/projects/ebird/EBD_relAug-2014/ebd_relAug-2014.txt","r")
 
 tt = 0
 ind  = 0
-outputfile = open("/home/projects/ebird/BCR30/EBD-ERDData.txt","w")
+outputfile = open("/home/projects/ebird/BCR30/EBD-None-ERDData.txt","w")
 linetot = 0
-InBCRTot = 0
-InBCRCom = 0
-OutBCRTot = 0
-OutBCRCom = 0
 for line in inputfile:
 	tt += 1
-	#if tt>100: break
 	if tt % 1000000==0: print tt,"complete!",linetot
 	ss = line.split("\t")
 	if tt==1:
 		ind = 0
 		for s in ss:
 			if s=="SAMPLING EVENT IDENTIFIER":
-				indEvent = ind
-			if s=="ALL SPECIES REPORTED":
-				indComp = ind
-			ind += 1
-#		outputfile.write(line)
+				break
+			else:
+				ind += 1
+		outputfile.write(line)
 		continue
-	if not bSearch(ss[indEvent]):
-		OutBCRTot += 1
-		if ss[indComp]=="1": OutBCRCom += 1
-	else:
-		InBCRTot += 1
-		if ss[indComp]=="1": InBCRCom += 1
-
-print indEvent,indComp
-print "InBCR Tot=",InBCRTot,"Complete=",InBCRCom
-print "OutBCR Tot=",OutBCRTot,"Complete=",OutBCRCom
-#	outputfile.write(line)
+	if bSearch(ss[ind]): continue
+	outputfile.write(line)
+	linetot += 1
 
