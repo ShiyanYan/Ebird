@@ -46,7 +46,7 @@ for line in inputfile:
 			ind += 1
 #		outputfile.write(line)
 		continue
-	if not (ss[BCR]=='37' or ss[BCR]=='30' or ss[BCR]=='31'):
+	if not (ss[indBCR]=='37' or ss[indBCR]=='30' or ss[indBCR]=='31'):
 		OutBCRTot += 1
 		if ss[indComp]=="1": OutBCRCom += 1
 	else:
