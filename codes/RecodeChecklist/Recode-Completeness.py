@@ -1,6 +1,6 @@
 #Recode the checklists to Region, Season, Species, ChecklistNum of Obeservers, Completeness
 import cPickle as pickle
-inputfile = open("/home/projects/ebird/BCR30/EBD-BCR30.txt","r")
+inputfile = open("/home/projects/ebird/BCR30/ECR303137.txt","r")
 
 MinLong = 60
 MaxLong = 130
@@ -117,7 +117,7 @@ for line in lineset:
 	previous = line
 
 outputHeadLine = "EventID,Region,Season,SpeciesNum,ObserverLevel,Completeness\n"
-outputfile = open("/home/projects/ebird/BCR30/EBD_Encoded_5var.csv","w")
+outputfile = open("/home/projects/ebird/BCR30/EBD_Encoded_5var_1111.csv","w")
 outputfile.write(outputHeadLine)
 for line in newlineset:
 	outputfile.write(line)
