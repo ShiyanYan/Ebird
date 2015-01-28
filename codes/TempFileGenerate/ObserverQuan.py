@@ -7,6 +7,7 @@ inputfile = open("/home/projects/ebird/BCR30/ECR303137.txt","r")
 
 dic = {}
 tt = 0
+ObserIndex = 0
 for line in inputfile:
 	ss = line.split("\t")
 	tt += 1

@@ -44,7 +44,7 @@ for line in inputfile:
 			if s=="BCR CODE":
 				indBCR = ind
 			ind += 1
-#		outputfile.write(line)
+		outputfile.write(line)
 		continue
 	if not (ss[indBCR]=='37' or ss[indBCR]=='30' or ss[indBCR]=='31'):
 		OutBCRTot += 1

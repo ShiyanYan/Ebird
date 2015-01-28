@@ -15,15 +15,15 @@ tempPath = "/home/projects/ebird/BCR30/Temp/"
 ObserIDdic = pickle.load(open(tempPath + "UserIDCount.dump","r"))
 EventIDdic = pickle.load(open(tempPath + "EventIDCount.dump","r"))
 
-newdic = {}
-for item in sorted(ObserIDdic):
-	newdic[item] = ObserIDdic[item]
-ObserIDdic = dict(newdic)
+#newdic = {}
+#for item in sorted(ObserIDdic):
+#	newdic[item] = ObserIDdic[item]
+#ObserIDdic = dict(newdic)
 
-newdic = {}
-for item in sorted(EventIDdic):
-	newdic[item] = EventIDdic[item]
-EventIDdic = dict(newdic)
+#newdic = {}
+#for item in sorted(EventIDdic):
+#	newdic[item] = EventIDdic[item]
+#EventIDdic = dict(newdic)
 
 
 
@@ -50,6 +50,7 @@ for line in inputfile:
 			if ss[i] == "ALL SPECIES REPORTED": CompleteIndex = i
 			if ss[i] == "SAMPLING EVENT IDENTIFIER": SEIndex = i
 			if ss[i] == "OBSERVER ID": ObserIndex = i
+		print LatiIndex,LongtiIndex,DateIndex,CompleteIndex,SEIndex,ObserIndex
 		continue
 	EventID = ss[SEIndex]
 	if EventID == previous: continue

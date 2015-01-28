@@ -1,6 +1,6 @@
 #SpeciesInRegions
 import cPickle as pickle
-inputfile = open("/home/projects/ebird/BCR30/EBD-BCR30.txt","r")
+inputfile = open("/home/projects/ebird/BCR30/ECR303137.txt","r")
 
 MinLong = 60
 MaxLong = 130
@@ -66,7 +66,7 @@ for line in inputfile:
 	Long = float(ss[LongtiIndex])
 	k1 = int((Lati - 20)/0.25)
 	k2 = int((Long + 130)/0.25)
-	if not (k1 * 1000 + k2) in regionList: continue
+#	if not (k1 * 1000 + k2) in regionList: continue
 
 	sciName = ss[SpeciesIndex]
 	subSciName = ss[SubspeciesIndex]
@@ -94,7 +94,7 @@ for line in inputfile:
 
 
 outputHeadLine = "SpeciesSciName,InCompleteness,Completeness\n"
-outputfile = open("/home/projects/ebird/BCR30/SpeciesCompleteness.csv","w")
+outputfile = open("/home/projects/ebird/BCR30/SpeciesCompletenessAll.csv","w")
 outputfile.write(outputHeadLine)
 for sp in speciesDicA:
 	outputfile.write(sp + ",")
@@ -104,7 +104,7 @@ for sp in speciesDicA:
 		outputfile.write( "0" + "," + str(speciesDicA[sp]) + "\n")
 
 outputHeadLine = "SubSpeciesSciName,InCompleteness,Completeness\n"
-outputfile2 = open("/home/projects/ebird/BCR30/SubSpeciesCompleteness.csv","w")
+outputfile2 = open("/home/projects/ebird/BCR30/SubSpeciesCompletenessAll.csv","w")
 outputfile2.write(outputHeadLine)
 for sp in subspeciesDicA:
 	outputfile2.write(sp + ",")
