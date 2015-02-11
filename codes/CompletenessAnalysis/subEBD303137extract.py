@@ -11,8 +11,8 @@ commonSpecies = ["northern cardinal","american robin","mourning dove","american 
 rareSpecies = ["swamp sparrow","indigo bunting","blue-gray gnatcatcher","black vulture","forster's tern","northern parula","purple martin","white-eyed vireo","blackpoll warbler","blue grosbeak","winter wren","royal tern","american pipit","yellow-breasted chat","yellow-throated vireo","louisiana waterthrush","brown-headed nuthatch"]
 
 
-outfile = open("/home/projects/ebird/BCR30/SubEBD303137.csv","w")
-outfile.write("EventID,ObserverID,Complete,SYear,BCR,Common,Rare,Count,SpecNum,\n")
+outfile = open("/home/projects/ebird/BCR30/SubEBD303137-TruncHis.csv","w")
+outfile.write("EventID,ObserverID,Complete,SYear,BCR,Common,Rare,Count,SpecNum\n")
 
 ObserIndex = 0
 DateIndex = 0
@@ -59,17 +59,19 @@ for line in infile:
 	EventID = ss[SEIndex]
 	if tt==2: previous = EventID
 	if (EventID!=previous) and (previous!=""):
-		outfile.write(previous + "," + UserID + "," + Complete + ",")
 		if ObMatchSY[UserID] < 2002: 
 			base = 2002
 		else:
+			outfile.write(previous + "," + UserID + "," + Complete + ",")
 			base = ObMatchSY[UserID]
-		outfile.write(str(Year - base + 1) + "," + BCR + "," + str(commoncount) + "," + str(rarecount) + "," + str(totCount) + "," + str(SpeciesCount) + "\n")
+			outfile.write(str(yearprevious - base + 1) + "," + BCR + "," + str(commoncount) + "," + str(rarecount) + "," + str(totCount) + "," + str(SpeciesCount) + "\n")
+			if (yearprevious-base<0): print UserID,yearprevious,ObMatchSY[UserID]
 		commoncount = 0
 		rarecount = 0
 		totCount = 0
 		SpeciesCount = 0
 	previous = EventID
+	yearprevious = Year
 	UserID = ss[ObserIndex]
 	Complete = ss[CompleteIndex]
 	BCR = ss[BCRIndex]

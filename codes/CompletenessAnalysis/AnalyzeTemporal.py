@@ -1,6 +1,6 @@
 import cPickle as pickle
 
-infile = open("/home/projects/ebird/BCR30/SubEBD303137.csv","r")
+infile = open("/home/projects/ebird/BCR30/SubEBD303137-TruncHis.csv","r")
 
 YearCom = {}
 YearInc = {}
@@ -37,13 +37,13 @@ for line in infile:
 		if rare>0:
 			if Year in YearIncRar: YearIncRar[Year] += 1
 			else: YearIncRar[Year] = 1
-outfile1 = open("/home/projects/ebird/BCR30/Year-Comp-Analysis.csv","w")
+outfile1 = open("/home/projects/ebird/BCR30/Year-Comp-Analysis-TruncHis.csv","w")
 outfile1.write("Year,Com,Incomp,InRate\n")
 for i in range(1,14):
 	outfile1.write( str(i) + "," + str(YearCom[i]) + "," + str(YearInc[i]) + "," + str(float(YearInc[i])/(float(YearCom[i]) + float(YearInc[i]))) + "\n")
 
-outfile3 = open("/home/projects/ebird/BCR30/Year-Comp-ComRar-Analysis.csv","w")
+outfile3 = open("/home/projects/ebird/BCR30/Year-Comp-ComRar-Analysis-TruncHis.csv","w")
 outfile3.write("Year,CompCommon,CompRare,IncompCommon,IncompRare\n")
 for i in range(1,13):
 	sumbase = float(YearCom[i] + YearInc[i])
-	outfile3.write(str(i) + "," + str(float(YearComCom[Year])/sumbase) + "," + str(float(YearComRar[Year])/sumbase) + "," + str(float(YearIncCom[Year])/sumbase) + "," + str(float(YearIncRar[Year])/sumbase) + "\n" )
+	outfile3.write(str(i) + "," + str(float(YearComCom[i])/sumbase) + "," + str(float(YearComRar[i])/sumbase) + "," + str(float(YearIncCom[i])/sumbase) + "," + str(float(YearIncRar[i])/sumbase) + "\n" )
