@@ -18,25 +18,34 @@ for line in infile:
 		for i in range(1,16):
 			IDmatchList[obID].append(0)
 		IDmatchList[obID][Year] = 1
-		totOb += 1
 
-print totOb
 IDmatchNum = {}
 NummatchID = {}
 tt = 0
+FinalMatch = {}
 for ID in IDmatchList:
-	tt += 1
 	maxt = 0
+	sumt = 0
 	for i in range(0,15):
+		sumt += IDmatchList[ID][i]
 		if IDmatchList[ID][i]>maxt: maxt = IDmatchList[ID][i]
 	for i in range(0,15):
 		IDmatchList[ID][i] = float(IDmatchList[ID][i])/float(maxt)
+	if sumt<=100: continue
+	FinalMatch[ID] = IDmatchList[ID]
+	tt += 1
 	IDmatchNum[ID] = tt
 	NummatchID[tt] = ID
 outfile = open("/home/projects/ebird/BCR30/IDmatchCProfile","w")
 
-pickle.dump(IDmatchList,outfile)
+print tt
+pickle.dump(FinalMatch,outfile)
 outfile2 = open("/home/projects/ebird/BCR30/IDmatchNum","w")
 pickle.dump(IDmatchNum,outfile2)
 outfile3 = open("/home/projects/ebird/BCR30/NummatchID","w")
 pickle.dump(NummatchID,outfile3)
+
+outfile4 = open("/home/projects/ebird/BCR30/pref.txt","w")
+for i in range(1,tt+1):
+	outfile4.write("0\n")
+
