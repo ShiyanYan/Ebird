@@ -47,5 +47,5 @@ pickle.dump(NummatchID,outfile3)
 
 outfile4 = open("/home/projects/ebird/BCR30/pref.txt","w")
 for i in range(1,tt+1):
-	outfile4.write("0\n")
+	outfile4.write("0.425\n")
 
