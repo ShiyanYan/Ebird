@@ -5,7 +5,7 @@ IDmatchNum = pickle.load(open("/home/projects/ebird/BCR30/IDmatchNum","r"))
 NummatchID = pickle.load(open("/home/projects/ebird/BCR30/NummatchID","r"))
 
 
-ClusterN = 12
+ClusterN = 16
 ClusterCenter = []
 NewClusterCenter = []
 for i in range(0,ClusterN+1):
@@ -20,6 +20,7 @@ for i in range(1,ClusterN+1):
 		ClusterCenter[i][year] = IDmatchList[NummatchID[i+100]][year]
 itMax = 100
 it = 0
+label = {}
 while it<itMax:
 	it += 1
 	# initialize new cluster center and 
@@ -46,6 +47,7 @@ while it<itMax:
 			if dis < CloseDist:
 				CloseDist = dis
 				lab = j
+		label[i] = lab
 		CenterTot[lab] += 1
 		IDmatchLabel[NummatchID[i]] = lab
 		for year in range(1,15):
@@ -73,10 +75,26 @@ while it<itMax:
 	print "iteration",it,"DisTot=",disTot
 	if disTot<0.0001: break
 
-outfile = open("/home/projects/ebird/BCR30/Time-series-12-above20.csv","w")
+pickle.dump(IDmatchLabel,open("/home/projects/ebird/BCR30/IDmatchLabel.dump","w"))
+outComp = open("/home/projects/ebird/BCR30/K-means-Compare.csv","w")
+outfile = open("/home/projects/ebird/BCR30/Time-series-16-above100-Kmeans.csv","w")
 for i in range(1,ClusterN+1):
 	print "Cluster",i,"Tot=",CenterTot[i],"DisInCluster=",dissubt[i]
 	#print ClusterCenter[i]
-	for j in range(1,14):
+	for j in range(1,13):
 		outfile.write(str(ClusterCenter[i][j]) + ",")
-	outfile.write(str(ClusterCenter[i][14]) + "\n")
+	outfile.write(str(ClusterCenter[i][13]) + "\n")
+	kk = []
+	for num in label:
+		if label[num]==i: 
+			kk.append(num)
+			if (len(kk)>4): break
+	#K-means Compare
+	#print ClusterCenter[i],IDmatchList[NummatchID[kk]]
+	for year in range(1,13):
+		outComp.write(str(ClusterCenter[i][year]) + ",")
+	outComp.write(str(ClusterCenter[i][year]) + "\n")
+	for item in kk:
+		for year in range(1,13):
+			outComp.write(str(IDmatchList[NummatchID[item]][year]) + ",")
+		outComp.write( str(IDmatchList[NummatchID[item]][year]) + "\n")

@@ -18,7 +18,13 @@ for line in infile:
 		for i in range(1,16):
 			IDmatchList[obID].append(0)
 		IDmatchList[obID][Year] = 1
-
+CheckListNum ={}
+for ID in IDmatchList:
+	c = 0
+	for year in range(1,14):
+		c += IDmatchList[ID][year]
+	CheckListNum[ID] = c
+pickle.dump(CheckListNum,open("/home/projects/ebird/BCR30/ChecklistNum.dump","w"))
 IDmatchNum = {}
 NummatchID = {}
 tt = 0
@@ -38,6 +44,7 @@ for ID in IDmatchList:
 	NummatchID[tt] = ID
 outfile = open("/home/projects/ebird/BCR30/IDmatchCProfile","w")
 
+#Count Checklist Number for birders
 print tt
 pickle.dump(FinalMatch,outfile)
 outfile2 = open("/home/projects/ebird/BCR30/IDmatchNum","w")

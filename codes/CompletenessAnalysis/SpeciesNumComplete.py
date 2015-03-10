@@ -17,7 +17,7 @@ for line in infile:
 outfile = open("/home/projects/ebird/BCR30/SpecVComp.csv","w")
 outfile.write("SpecNum,ComRate\n")
 for key in sorted(SpecTot):
-	if (key in SpecCom) and (SpecTot[key]>5):
+	if (key in SpecCom) and (SpecTot[key]>20):
 		r = float(SpecCom[key]) / float(SpecTot[key])
 		outfile.write(str(key) + "," + str(r) + "\n")
 		print key,r
